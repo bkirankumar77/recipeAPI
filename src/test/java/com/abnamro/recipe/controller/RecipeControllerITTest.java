@@ -101,7 +101,7 @@ class RecipeControllerITTest {
     recipe.setRecipeName("Salmon Soup");
     recipe.setInstructions("take bowl,take pan,salmon peices,chillpowder");
     recipe.setIngredients(Arrays.asList(new Ingredient[]{Ingredient.SALMON}));
-    recipe.setVegetarian(false);
+    recipe.setIsVegetarian(false);
     recipe.setNumberOfServings(2);
     recipe.setCreatedDate(LocalDateTime.now());
     recipe.setUpdatedDate(LocalDateTime.now());

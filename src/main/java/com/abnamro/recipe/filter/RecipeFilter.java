@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class RecipeFilter {
 
     private Integer noOfServings;
-    private Boolean vegetarian;
+    private Boolean isVegetarian;
     private String instructions;
     private Ingredient includeIngredient;
     private Ingredient excludeIngredient;

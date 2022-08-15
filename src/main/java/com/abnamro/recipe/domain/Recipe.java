@@ -37,7 +37,7 @@ public class Recipe {
   @Min(value = 1)
   @Max(value = 20)
   private Integer numberOfServings;
-  private boolean vegetarian;
+  private Boolean isVegetarian;
   @Valid
   @NotEmpty
   @Size(min = 1)
