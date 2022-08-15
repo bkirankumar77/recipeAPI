@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 
-import com.abnamro.recipe.domain.Ingredient;
 import com.abnamro.recipe.domain.Recipe;
 import com.abnamro.recipe.exceptions.CustomizeExceptionHandler;
 import com.abnamro.recipe.service.RecipeService;
@@ -16,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -100,7 +100,7 @@ class RecipeControllerITTest {
     recipe.setRecipeId(1L);
     recipe.setRecipeName("Salmon Soup");
     recipe.setInstructions("take bowl,take pan,salmon peices,chillpowder");
-    recipe.setIngredients(Arrays.asList(new Ingredient[]{Ingredient.SALMON}));
+    recipe.setIngredients(List.of("Salmon"));
     recipe.setIsVegetarian(false);
     recipe.setNumberOfServings(2);
     recipe.setCreatedDate(LocalDateTime.now());

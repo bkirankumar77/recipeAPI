@@ -61,7 +61,8 @@ public class RecipeService {
         foundEntity.setInstructions(recipe.getInstructions());
         foundEntity.setNumberOfServings(recipe.getNumberOfServings());
         foundEntity.setIsVegetarian(recipe.getIsVegetarian());
-        foundEntity.setIngredients(recipe.getIngredients());
+        foundEntity.setIngredients(
+                recipe.getIngredients() != null ? String.join(",", recipe.getIngredients()) : "");
         foundEntity.setCreatedDate(recipe.getCreatedDate());
         foundEntity.setUpdatedDate(recipe.getUpdatedDate());
 

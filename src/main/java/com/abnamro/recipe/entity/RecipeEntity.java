@@ -1,6 +1,5 @@
 package com.abnamro.recipe.entity;
 
-import com.abnamro.recipe.domain.Ingredient;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -28,9 +26,7 @@ public class RecipeEntity {
     private String instructions;
     private Integer numberOfServings;
     private Boolean isVegetarian;
-    @ElementCollection(targetClass = Ingredient.class, fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private List<Ingredient> ingredients;
+    private String ingredients;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdDate;

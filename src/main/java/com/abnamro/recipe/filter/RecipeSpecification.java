@@ -25,16 +25,17 @@ public class RecipeSpecification {
                         .ge(root.<Integer>get("numberOfServings"), filter.getNoOfServings()));
             }
             if (filter.getInstructions() != null) {
-                predicates.add(criteriaBuilder.like(root.get("instructions"),
-                        "%" + filter.getInstructions() + "%"));
+                predicates.add(criteriaBuilder.like(criteriaBuilder.lower(root.get("instructions")),
+                        "%" + filter.getInstructions().toLowerCase() + "%"));
             }
             if (filter.getIncludeIngredient() != null) {
-                criteriaBuilder
-                        .like(root.get("ingredients"), "%" + filter.getIncludeIngredient().name() + "%");
+                predicates.add(criteriaBuilder.like(criteriaBuilder.lower(root.get("ingredients")), "%" +
+                        filter.getIncludeIngredient().toLowerCase() + "%"));
             }
             if (filter.getExcludeIngredient() != null) {
-                criteriaBuilder
-                        .notLike(root.get("ingredients"), "%" + filter.getExcludeIngredient().name() + "%");
+                predicates.add(criteriaBuilder
+                        .notLike(criteriaBuilder.lower(root.get("ingredients")),
+                                "%" + filter.getExcludeIngredient().toLowerCase() + "%"));
             }
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };

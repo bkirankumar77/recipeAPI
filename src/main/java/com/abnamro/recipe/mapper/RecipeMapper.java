@@ -4,6 +4,9 @@ import com.abnamro.recipe.domain.Recipe;
 import com.abnamro.recipe.entity.RecipeEntity;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class RecipeMapper {
 
@@ -17,7 +20,8 @@ public class RecipeMapper {
                 .instructions(entity.getInstructions())
                 .numberOfServings(entity.getNumberOfServings())
                 .isVegetarian(entity.getIsVegetarian())
-                .ingredients(entity.getIngredients())
+                .ingredients(entity.getIngredients() != null ? List.of(entity.getIngredients().split(","))
+                        : new ArrayList<>())
                 .createdDate(entity.getCreatedDate())
                 .updatedDate(entity.getUpdatedDate()).build();
     }
@@ -28,7 +32,7 @@ public class RecipeMapper {
                 .instructions(recipe.getInstructions())
                 .numberOfServings(recipe.getNumberOfServings())
                 .isVegetarian(recipe.getIsVegetarian())
-                .ingredients(recipe.getIngredients())
+                .ingredients(recipe.getIngredients() != null ? String.join(",", recipe.getIngredients()) : "")
                 .createdDate(recipe.getCreatedDate())
                 .updatedDate(recipe.getUpdatedDate()).build();
     }

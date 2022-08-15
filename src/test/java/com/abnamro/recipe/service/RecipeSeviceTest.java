@@ -1,5 +1,7 @@
 package com.abnamro.recipe.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import com.abnamro.recipe.domain.Recipe;
@@ -33,13 +35,13 @@ class RecipeServiceTest {
     List<RecipeEntity> recipeList = new ArrayList<>();
     recipeList.add(getRecipeEntity());
     when(recipeRepository.findAll()).thenReturn(recipeList);
-    recipeService.viewRecipes();
+    Assertions.assertEquals(recipeService.viewRecipes().size(), recipeList.size());
   }
 
   @Test
   void createRecipeTest() {
     when(recipeRepository.save(getRecipeEntity())).thenReturn(getRecipeEntity());
-    recipeService.createRecipe(getRecipe());
+    Assertions.assertEquals(1, (long) recipeService.createRecipe(getRecipe()).getRecipeId());
   }
 
   @Test
@@ -78,6 +80,7 @@ class RecipeServiceTest {
     recipe.setRecipeId(1L);
     recipe.setRecipeName("Salmon Soup");
     recipe.setInstructions("take bowl,take pan,salmon peices,chillpowder");
+    recipe.setIngredients("");
     return recipe;
   }
 
